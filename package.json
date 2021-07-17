@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@react-hook/media-query": "^1.1.1",
     "dateformat": "^4.5.1",
     "next": "11.0.1",
