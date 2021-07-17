@@ -1,0 +1,22 @@
+export type Coupon = {
+  comment: string;
+  couponCode: string;
+  couponType: string;
+  discount: number;
+  discountType: string;
+  expiryDate: string;
+  id: number;
+  maxDiscountAmount: number;
+  maxRedemption: number;
+  maxSingleRedemption: number;
+  minOrderAmount: number;
+  slug: string;
+  startDate: string;
+  status: string;
+  type: string;
+  validOnDays: Object;
+  validOnPayment: string;
+  validOnSlots: string;
+  validOnStores: string;
+  validOnUser: string;
+};
