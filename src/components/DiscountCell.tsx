@@ -7,7 +7,7 @@ export const DiscountCell = ({ row }: UseTableCellProps<Coupon>) => {
       <div>
         <b>$ {row.original.discount}</b>
       </div>
-      <div>Cart Discount</div>
+      <div style={{ fontSize: ".8em", color: "#aaa" }}>Cart Discount</div>
     </div>
   );
 };

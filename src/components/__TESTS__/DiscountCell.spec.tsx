@@ -28,7 +28,5 @@ test("snapshot of discount cell", () => {
   } as any;
   render(<DiscountCell {...props} />);
 
-  expect(screen.getByTitle("discount").innerHTML).toMatchInlineSnapshot(
-    `"<div><b>$ 1</b></div><div>Cart Discount</div>"`
-  );
+  expect(screen.getByTitle("discount").innerHTML).toMatchInlineSnapshot(`"<div><b>$ 1</b></div><div style=\\"font-size: .8em; color: rgb(170, 170, 170);\\">Cart Discount</div>"`);
 });

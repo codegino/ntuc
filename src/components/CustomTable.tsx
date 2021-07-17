@@ -18,7 +18,7 @@ const Styles = styled.div`
 
   table {
     border-spacing: 0;
-    border: 1px solid black;
+    border-bottom: 1px solid #f1f1f1;
     width: 100%;
 
     tr {
@@ -33,12 +33,22 @@ const Styles = styled.div`
     td {
       margin: 0;
       padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
+      border-bottom: 1px solid #f1f1f1;
+      text-align: left;
 
       :last-child {
         border-right: 0;
       }
+    }
+
+    tr {
+      :nth-child(even) {
+        background-color: #fafafa;
+      }
+    }
+
+    td {
+      padding: 1rem 0;
     }
   }
 

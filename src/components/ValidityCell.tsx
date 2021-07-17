@@ -8,7 +8,9 @@ export const ValidityCell = ({ row }: UseTableCellProps<Coupon>) => {
       <div>
         <b>{dateformat(row.original.startDate, "dS mmm yyyy")}</b>
       </div>
-      <div>{dateformat(row.original.expiryDate, "dS mmm yyyy")}</div>
+      <div style={{ color: "#aaa" }}>
+        {dateformat(row.original.expiryDate, "dS mmm yyyy")}
+      </div>
     </div>
   );
 };

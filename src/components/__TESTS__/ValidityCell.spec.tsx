@@ -31,7 +31,5 @@ test("snapshot of validity cell", () => {
   } as any;
   render(<ValidityCell {...b} />);
 
-  expect(screen.getByTitle("validity").innerHTML).toMatchInlineSnapshot(
-    `"<div><b>17th Jul 2020</b></div><div>9th Aug 2021</div>"`
-  );
+  expect(screen.getByTitle("validity").innerHTML).toMatchInlineSnapshot(`"<div><b>17th Jul 2020</b></div><div style=\\"color: rgb(170, 170, 170);\\">9th Aug 2021</div>"`);
 });
