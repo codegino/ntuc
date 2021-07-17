@@ -10,7 +10,6 @@ export default function Home() {
     fetch("/api/data.json")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data.coupon);
         setState(res.data.coupon);
       });
   }, []);

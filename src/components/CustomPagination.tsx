@@ -1,8 +1,8 @@
 import { TableInstance } from "react-table";
 import { Coupon } from "../models/coupon.model";
+import { useMediaQueries } from "@react-hook/media-query";
 
 export const CustomPagination = ({
-  pageIndex,
   pageOptions,
   rows,
   previousPage,
@@ -11,13 +11,22 @@ export const CustomPagination = ({
   pageCount,
   nextPage,
   canNextPage,
+  state: { pageIndex, pageSize },
 }: TableInstance<Coupon>) => {
+  const { matchesAll } = useMediaQueries({
+    screen: "screen",
+    width: "(max-width: 600px)",
+  });
+
   return (
-    <div className="pagination">
+    <div
+      className="pagination"
+      style={{
+        flexDirection: matchesAll ? "column" : "row",
+      }}
+    >
       <div>
-        <span>
-          Showing {pageIndex + 1} - {pageOptions.length} of {rows.length}
-        </span>
+        Showing {pageIndex + 1} - {pageOptions.length} of {rows.length}
       </div>
       <div>
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>

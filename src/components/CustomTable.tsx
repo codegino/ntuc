@@ -10,6 +10,11 @@ import { CustomPagination } from "./CustomPagination";
 
 const Styles = styled.div`
   padding: 1rem;
+  @media screen and (max-width: 600px) {
+    & {
+      padding: 0;
+    }
+  }
 
   table {
     border-spacing: 0;
@@ -65,47 +70,49 @@ function Table({
 
   return (
     <>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => {
-            const { key: headerKey, ...restHeaderGroupProps } =
-              headerGroup.getHeaderGroupProps();
+      <div style={{ overflowX: "auto" }}>
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map((headerGroup) => {
+              const { key: headerKey, ...restHeaderGroupProps } =
+                headerGroup.getHeaderGroupProps();
 
-            return (
-              <tr {...restHeaderGroupProps} key={headerKey}>
-                {headerGroup.headers.map((column) => {
-                  const { key: columnKey, ...restHeaderProps } =
-                    column.getHeaderProps();
-                  return (
-                    <th {...restHeaderProps} key={columnKey}>
-                      {column.render("Header")}
-                    </th>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-            const { key: rowKey, ...restRowProps } = row.getRowProps();
-            prepareRow(row);
-            return (
-              <tr {...restRowProps} key={rowKey}>
-                {row.cells.map((cell) => {
-                  const { key: cellKey, ...restCellProps } =
-                    cell.getCellProps();
-                  return (
-                    <td {...restCellProps} key={cellKey}>
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+              return (
+                <tr {...restHeaderGroupProps} key={headerKey}>
+                  {headerGroup.headers.map((column) => {
+                    const { key: columnKey, ...restHeaderProps } =
+                      column.getHeaderProps();
+                    return (
+                      <th {...restHeaderProps} key={columnKey}>
+                        {column.render("Header")}
+                      </th>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {page.map((row, i) => {
+              prepareRow(row);
+              const { key: rowKey, ...restRowProps } = row.getRowProps();
+              return (
+                <tr {...restRowProps} key={rowKey}>
+                  {row.cells.map((cell) => {
+                    const { key: cellKey, ...restCellProps } =
+                      cell.getCellProps();
+                    return (
+                      <td {...restCellProps} key={cellKey}>
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <CustomPagination {...tableInstance} />
     </>
   );
