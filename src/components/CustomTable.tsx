@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useTable, usePagination, Column } from "react-table";
+import { useTable, usePagination, Column, useSortBy } from "react-table";
 import { Coupon } from "../models/coupon.model";
 import { DiscountCell } from "./DiscountCell";
 import { ValidityCell } from "./ValidityCell";
@@ -72,6 +72,7 @@ function Table({
       data,
       initialState: { pageIndex: 0, pageSize: 20 },
     },
+    useSortBy,
     usePagination
   );
 
@@ -91,10 +92,17 @@ function Table({
                 <tr {...restHeaderGroupProps} key={headerKey}>
                   {headerGroup.headers.map((column) => {
                     const { key: columnKey, ...restHeaderProps } =
-                      column.getHeaderProps();
+                      column.getHeaderProps(column.getSortByToggleProps());
                     return (
                       <th {...restHeaderProps} key={columnKey}>
                         {column.render("Header")}
+                        <span>
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? " 🔽"
+                              : " 🔼"
+                            : ""}
+                        </span>
                       </th>
                     );
                   })}
