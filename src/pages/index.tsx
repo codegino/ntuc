@@ -3,17 +3,7 @@ import React from "react";
 import CustomTable from "../components/CustomTable";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
-  const [state, setState] = React.useState([]);
-
-  React.useEffect(() => {
-    fetch("/api/data.json")
-      .then((res) => res.json())
-      .then((res) => {
-        setState(res.data.coupon);
-      });
-  }, []);
-
+export default function Home({ coupons }: any) {
   return (
     <div className={styles.container}>
       <Head>
@@ -23,8 +13,20 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <CustomTable data={state} />
+        <CustomTable data={coupons} />
       </main>
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const coupons = await fetch(
+    "https://storage.googleapis.com/coding_challenge_assets/data.json"
+  )
+    .then((res) => res.json())
+    .then((res) => res.data.coupon);
+
+  return {
+    props: { coupons },
+  };
+};
