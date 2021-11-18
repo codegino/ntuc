@@ -3,14 +3,6 @@
 #### Deployed version
 https://ntuc.vercel.app
 
-
-
-> NOTE: I intentionally did not use any standard for styling. I'm trying to show that I can work with different approach.
-
-> I only created basic tests since `100%` coverage will be time consuming. If testing `rest endpoints` is need, we can use `msw`.
-
-> UI is not color and pixel perfect for the same reason as above
-
 ### Running tests
 
 ```bash
